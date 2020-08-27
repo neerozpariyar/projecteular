@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Falling</title>
+    <style>
+        #box{
+            width: 500px;
+            height: 500px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="box" ></canvas>
+    <script>
+        //declaring variable
+        const FPS = 60;
+        var bs = 30;//ball size
+        var x,y;//ball location, will constantly change while moving the ball,also starting position
+        var xv,yv; //velocity, how fast will it move,pixels per frame
+        var canvas,context;
+
+        //load canvas
+        canvas = document.getElementById("box");
+        context = canvas.getcontext("2d");
+
+        //setup interval(game loop)
+        setupinterval(update,1000 / FPS);
+
+        //ball starting position
+         x=canvas.width /2;
+         y=canvas.height /2;
+
+        //random ball direction
+        yv=Math.floor(Math.random() * 101+100) / FPS;
+
+        //update fn
+        function update(){
+            //move the ball
+            by +=yv;
+
+            //background and ball
+            context.fillStyle = "black";
+            context.fillRect(0,0, canvas.width, canvas.height);
+            context.fillStyle="black";
+            context.fillRect(bx-bs/2,by-bs/2,bs, bs);
+        }
+
+    </script>
+</body>
+</html>
